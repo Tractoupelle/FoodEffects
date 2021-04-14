@@ -34,7 +34,7 @@ public enum FoodType {
 
     }
 
-    public static FoodType getAssetFromString(String asset) {
+    public static FoodType getFoodFromString(String asset) {
 
         for (FoodType me : FoodType.values()) {
             if (me.name().equalsIgnoreCase(asset)) {
@@ -45,7 +45,5 @@ public enum FoodType {
         return null;
 
     }
-
-
 
 }

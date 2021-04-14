@@ -44,7 +44,7 @@ public class FoodsManager {
 
             if (FoodType.isFood(foodName.toLowerCase(Locale.ROOT))) {
 
-                FoodType assetType = FoodType.getAssetFromString(foodName);
+                FoodType assetType = FoodType.getFoodFromString(foodName);
 
                 addFoodList(corePlugin.getConfiguration().getString("ITEMS." + i + ".IDENTIFIER"),
                         new ItemBuilder(Material.getMaterial(corePlugin.getConfiguration().getString("ITEMS." + i + ".MATERIAL")))
@@ -65,6 +65,5 @@ public class FoodsManager {
 
         }
     }
-
 
 }
