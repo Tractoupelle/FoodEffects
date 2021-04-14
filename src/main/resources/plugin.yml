@@ -1,0 +1,11 @@
+name: FoodEffects
+version: ${project.version}
+description: Public FoodEffects plugin.
+author: Tractopelle
+
+main: fr.tractopelle.foodeffects.CorePlugin
+
+commands:
+  foodeffects:
+    aliases: [fe]
+    description: Main command.

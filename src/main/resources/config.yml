@@ -1,0 +1,46 @@
+###############################################################
+#  Default configuration for FoodEffects by Tractopelle#4020  #
+###############################################################
+
+PREFIX: "§6FoodEffects §f» §e"
+
+NO-PERMISSION: "You don't have the permission."
+NOT-PLAYER: "Only player can execute this command."
+UNKNOW-PLAYER: "This player does not exist or is not logged in."
+NOT-AN-INT: "Please specify a valid amount."
+NOT-AN-FOOD: "Please specify a valid food (%foods%)"
+USAGE-ADMIN:
+  - "§6FoodEffects §f» §e"
+  - " §f» §e/foodeffects info"
+  - " §f» §e/foodeffects give <player> <amount> <foodeffect>"
+FOOD-LIST: "Available foods : %foods%"
+GIVE-FOOD: "You have given %amount% %food% to %player%."
+
+
+ITEMS:
+  1:
+    IDENTIFIER: COOKIE_SPEED
+    MATERIAL: COOKIE
+    EFFECT: SPEED
+    LEVEL: 2
+    DURATION: 240
+    GLOW: true
+    NAME: "§8● §eCookie Speed II"
+    LORE:
+      - ""
+      - "§f» §eEating this cookie allows you to"
+      - "  §ehave §6Speed II§e for §64 §eminutes."
+      - ""
+  2:
+    IDENTIFIER: COOKIE_STRENGHT
+    MATERIAL: COOKIE
+    EFFECT: INCREASE_DAMAGE
+    LEVEL: 1
+    DURATION: 240
+    GLOW: true
+    NAME: "§8● §eCookie Strenght I"
+    LORE:
+      - ""
+      - "§f» §eEating this cookie allows you to"
+      - "  §ehave §6Strenght I§e for §64 §eminutes."
+      - ""
