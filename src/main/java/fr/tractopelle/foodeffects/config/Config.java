@@ -25,14 +25,6 @@ public class Config extends YamlConfiguration {
         this.createFile();
     }
 
-    public String getFileName() {
-        return this.fileName;
-    }
-
-    public JavaPlugin getPlugin() {
-        return this.plugin;
-    }
-
     private void createFile() {
         File folder = this.plugin.getDataFolder();
 
@@ -63,5 +55,4 @@ public class Config extends YamlConfiguration {
         } catch (Exception ignored) {
         }
     }
-
 }

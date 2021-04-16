@@ -16,7 +16,6 @@ USAGE-ADMIN:
 FOOD-LIST: "Available foods : %foods%"
 GIVE-FOOD: "You have given %amount% %food% to %player%."
 
-
 ITEMS:
   1:
     IDENTIFIER: COOKIE_SPEED

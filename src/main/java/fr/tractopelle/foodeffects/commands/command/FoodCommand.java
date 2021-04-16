@@ -1,15 +1,14 @@
 package fr.tractopelle.foodeffects.commands.command;
 
 import fr.tractopelle.foodeffects.CorePlugin;
-import fr.tractopelle.foodeffects.base.Food;
-import fr.tractopelle.foodeffects.base.type.FoodType;
+import fr.tractopelle.foodeffects.food.Food;
 import fr.tractopelle.foodeffects.commands.FCommand;
-import fr.tractopelle.foodeffects.utils.ItemBuilder;
+import fr.tractopelle.foodeffects.item.ItemBuilder;
+import fr.tractopelle.foodeffects.item.RItemUnsafe;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,8 +16,7 @@ import java.util.stream.Collectors;
 
 public class FoodCommand extends FCommand {
 
-    private CorePlugin corePlugin;
-
+    private final CorePlugin corePlugin;
 
     public FoodCommand(CorePlugin corePlugin) {
         super(corePlugin, "foodeffects", true, "FOODEFFECTS.ADMIN");
@@ -31,8 +29,6 @@ public class FoodCommand extends FCommand {
         String prefix = corePlugin.getConfiguration().getString("PREFIX");
 
         if (args.length == 1 && args[0].equalsIgnoreCase("info")) {
-
-            System.out.println(corePlugin.getFoodsManager().getFoodsList());
 
             List<String> foodName = corePlugin.getFoodsManager().getFoodsList().stream()
                     .map(Food::getIdentifier).collect(Collectors.toList());
@@ -72,13 +68,18 @@ public class FoodCommand extends FCommand {
 
             if (foodOptional.isPresent()) {
 
-                ItemStack itemStack = foodOptional.get().getItemStack();
-                itemStack.setAmount(amount);
+                RItemUnsafe rItemUnsafe = new RItemUnsafe(new ItemBuilder(foodOptional.get().getItemStack()));
+                rItemUnsafe.setString("identifier", foodOptional.get().getIdentifier());
+                rItemUnsafe.toItemBuilder().toItemStack().setAmount(amount);
 
                 if (target.getInventory().firstEmpty() == -1) {
-                    target.getLocation().getWorld().dropItemNaturally(target.getLocation(), itemStack);
+
+                    target.getLocation().getWorld().dropItemNaturally(target.getLocation(), rItemUnsafe.toItemBuilder().toItemStack());
+
                 } else {
-                    target.getInventory().addItem(itemStack);
+
+                    target.getInventory().addItem(rItemUnsafe.toItemBuilder().toItemStack());
+
                 }
 
                 commandSender.sendMessage(prefix + corePlugin.getConfiguration().getString("GIVE-FOOD")
@@ -92,12 +93,14 @@ public class FoodCommand extends FCommand {
                         .map(Food::getIdentifier).collect(Collectors.toList());
 
                 commandSender.sendMessage(prefix + corePlugin.getConfiguration().getString("NOT-AN-FOOD")
-                .replace("%foods%", StringUtils.join(foodName,", ")));
+                        .replace("%foods%", StringUtils.join(foodName, ", ")));
+
             }
 
         }
 
         return false;
+
     }
 
     public static boolean isInt(String str) {

@@ -1,4 +1,4 @@
-package fr.tractopelle.foodeffects.utils;
+package fr.tractopelle.foodeffects.item;
 
 import org.bukkit.Color;
 import org.bukkit.DyeColor;
@@ -9,12 +9,12 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 import org.bukkit.inventory.meta.SkullMeta;
-
 import java.util.Arrays;
 import java.util.List;
 
 public class ItemBuilder {
-    private ItemStack is;
+
+    private final ItemStack is;
 
     public ItemBuilder(Material m) {
         this(m, 1);

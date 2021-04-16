@@ -1,4 +1,4 @@
-package fr.tractopelle.foodeffects.base.type;
+package fr.tractopelle.foodeffects.food.type;
 
 public enum FoodType {
 
@@ -22,7 +22,7 @@ public enum FoodType {
     MUTTON,
     COOKED_RABBIT;
 
-    public static boolean isFood(String food) {
+    public static boolean isFoodFromString(String food) {
 
         for (FoodType me : FoodType.values()) {
             if (me.name().equalsIgnoreCase(food)) {
@@ -33,17 +33,4 @@ public enum FoodType {
         return false;
 
     }
-
-    public static FoodType getFoodFromString(String asset) {
-
-        for (FoodType me : FoodType.values()) {
-            if (me.name().equalsIgnoreCase(asset)) {
-                return me;
-            }
-        }
-
-        return null;
-
-    }
-
 }

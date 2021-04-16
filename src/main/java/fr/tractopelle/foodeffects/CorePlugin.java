@@ -1,6 +1,6 @@
 package fr.tractopelle.foodeffects;
 
-import fr.tractopelle.foodeffects.base.Food;
+import fr.tractopelle.foodeffects.food.Food;
 import fr.tractopelle.foodeffects.commands.command.FoodCommand;
 import fr.tractopelle.foodeffects.config.Config;
 import fr.tractopelle.foodeffects.listeners.PlayerListener;
@@ -14,17 +14,21 @@ public class CorePlugin extends JavaPlugin {
 
     private Config configuration;
     private final Logger log = new Logger(this.getDescription().getFullName());
-    private Food food;
     private FoodsManager foodsManager;
 
     @Override
     public void onEnable() {
 
-        init();
+        this.init();
 
     }
 
     private void init() {
+
+        log.info("=======================================", Logger.LogType.SUCCESS);
+        log.info(" Plugin initialization in progress...", Logger.LogType.SUCCESS);
+        log.info(" Author: Tractopelle#4020", Logger.LogType.SUCCESS);
+        log.info("=======================================", Logger.LogType.SUCCESS);
 
         registerListeners();
 
@@ -33,11 +37,6 @@ public class CorePlugin extends JavaPlugin {
         this.configuration = new Config(this, "config");
 
         this.foodsManager = new FoodsManager(this);
-
-        log.info("=======================================", Logger.LogType.SUCCESS);
-        log.info(" Plugin initialization in progress...", Logger.LogType.SUCCESS);
-        log.info(" Author: Tractopelle#4020", Logger.LogType.SUCCESS);
-        log.info("=======================================", Logger.LogType.SUCCESS);
 
     }
 
@@ -48,9 +47,9 @@ public class CorePlugin extends JavaPlugin {
     }
 
     private void registerListeners() {
+
         PluginManager pm = Bukkit.getPluginManager();
         pm.registerEvents(new PlayerListener(this), this);
-
 
     }
 
